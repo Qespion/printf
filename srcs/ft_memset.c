@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:20:56 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/04 11:45:56 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:22 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {

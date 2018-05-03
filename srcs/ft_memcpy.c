@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:34:02 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/09 14:23:01 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:20 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

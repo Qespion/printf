@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/07 14:50:02 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/07 15:25:51 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:22 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 int	ft_power(int n, int power)
 {

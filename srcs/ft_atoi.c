@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:31:35 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/08 12:03:07 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:15:58 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 int	ft_atoi(const char *str)
 {

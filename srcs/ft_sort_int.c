@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/07 13:24:07 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/07 13:24:19 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:28 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void	ft_sort_int(int *lst, size_t len)
 {

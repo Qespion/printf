@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:22:08 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/01 11:07:10 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:31 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void	ft_strdel(char **as)
 {

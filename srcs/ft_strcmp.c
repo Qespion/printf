@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:22:01 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/04 12:14:24 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:30 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

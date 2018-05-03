@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 17:08:49 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/05 12:02:40 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:17 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
 {

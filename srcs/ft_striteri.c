@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:22:20 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/05 12:22:16 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:33 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {

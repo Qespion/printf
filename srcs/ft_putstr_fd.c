@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:48:42 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/05 13:41:43 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:27 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void	ft_putstr_fd(char const *s, int fd)
 {

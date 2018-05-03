@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:22:27 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/05 12:23:27 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:37 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

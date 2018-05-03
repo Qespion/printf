@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strfjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oespion <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 14:51:13 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/01 14:51:38 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:32 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 char	*ft_strfjoin(char const *s1, char const *s2)
 {

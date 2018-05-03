@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/05 14:24:03 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/07 14:42:17 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:34 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

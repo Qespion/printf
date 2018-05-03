@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:22:37 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/01 14:42:35 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:39 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 static int		ft_cw(char const *s, char c)
 {

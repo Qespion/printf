@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:22:18 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/07 14:44:15 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:33 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void	ft_striter(char *s, void (*f)(char *))
 {

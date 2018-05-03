@@ -6,11 +6,11 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 13:50:56 by oespion           #+#    #+#             */
-/*   Updated: 2018/04/04 19:57:22 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/03 16:16:18 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
