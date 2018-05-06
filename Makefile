@@ -71,7 +71,9 @@ SRC= srcs/ft_atoi.c \
      srcs/ft_is_uppercase.c \
      srcs/ft_free_tab.c \
      srcs/get_next_line.c \
-	 srcs/ft_printf.c
+	 srcs/ft_printf.c \
+     srcs/ft_get_arg.c \
+     srcs/ft_printable.c
 
 C_GREEN	=	"\033[32m"
 C_BLUE	=	"\033[36m"
@@ -88,9 +90,9 @@ $(NAME): $(OBJ)
 %.o: %.c
 	@gcc $(CFLAGS) -c $< -o $@ -I includes/
 	@echo "file =" $(C_BLUE){ $< } $(C_BASE)
-
 clean:
 	@rm -f $(OBJ)
+	@echo $(C_GREEN)"[CLEAN]" $(C_BASE)
 
 fclean: clean
 	@rm -f $(NAME)

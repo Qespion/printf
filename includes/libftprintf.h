@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 12:15:47 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/03 15:55:13 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/06 11:31:54 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,10 @@ int				ft_is_lowercase(char *str);
 int				ft_is_uppercase(char *str);
 void			ft_free_tab(char **tab);
 int				get_next_line(const int fd, char **line);
+void			ft_printf(const char *format, ...);
+void			ft_get_arg(char letter, void *str);
+void			prints(char *str);
+void			printnb(int str);
+void			printchar(char str);
 
 #endif

@@ -1,45 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_get_arg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/03 16:01:39 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/06 12:05:03 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/04 13:47:32 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/06 10:17:45 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
-void	ft_get_arg(char letter, void *str)
+void	get_arg(char letter)
 {
 	if (letter == 's')
-		prints((char*)str);
-	if (letter == 'd')
-		printnb((int)str);
-	if (letter == 'c')
-		printchar((char)str);
-}
-
-void	ft_printf(const char* format, ...)
-{
-	int			r;
-    va_list 	ap;
-	void  		*str;
-
-	r = 0;
-	va_start(ap, format);
-	while (format[r])
 	{
-		if (format[r] == '%')
-		{
-			str = va_arg(ap, void*);
-			ft_get_arg(format[++r], str);
-			r++;
-		}
-		ft_putchar((char)format[r++]);
+		ft_putchar('a');
 	}
-    va_end(ap);
 }
