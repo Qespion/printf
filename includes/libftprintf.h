@@ -105,5 +105,8 @@ void			ft_get_arg(char letter, void *str);
 void			prints(char *str);
 void			printnb(int str);
 void			printchar(char str);
+//int				ft_convert(int nb, int base);
+void			printhexa(int str);
+
 
 #endif

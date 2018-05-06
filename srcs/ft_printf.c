@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 16:01:39 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/06 12:05:03 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/06 14:04:56 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_get_arg(char letter, void *str)
 		printnb((int)str);
 	if (letter == 'c')
 		printchar((char)str);
+	if (letter == 'p')
+		printhexa((int)str);
 }
 
 void	ft_printf(const char* format, ...)

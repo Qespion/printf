@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printable.c                                     :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/06 11:37:15 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/06 14:05:26 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/06 13:54:53 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/06 14:03:17 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	prints(char	*str)
+int	ft_convert(int	nb, int base)
 {
-	ft_putstr(str);
-}
-
-void	printnb(int str)
-{
-	ft_putnbr(str);
-}
-
-void	printchar(char str)
-{
-	ft_putchar(str);
-}
-
-void	printhexa(int str)
-{
-	(void)str;
+	if (nb == 0 || base == 10)
+		return (nb);
+	return (nb % base + (ft_convert((nb / base), base)));
 }

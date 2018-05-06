@@ -74,6 +74,7 @@ SRC= srcs/ft_atoi.c \
 	 srcs/ft_printf.c \
      srcs/ft_get_arg.c \
      srcs/ft_printable.c
+  #   srcs/ft_convert.c
 
 C_GREEN	=	"\033[32m"
 C_BLUE	=	"\033[36m"
