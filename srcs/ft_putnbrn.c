@@ -1,24 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putnbrn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/04 10:18:39 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/07 12:16:08 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/07 17:12:36 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/07 17:43:33 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "locale.h"
+#include "libftprintf.h"
 
-void	ft_printf(const char *format, ...);
-
-int	main()
+int	ft_int_len(int nb)
 {
-	ft_printf("chaine simple %d & %s & letter = %c \n", 86, "chaine simple x2", 'z');
-	setlocale(LC_ALL, "");
-	printf("chaine simple %S ", L"漢字");
-	return (0);
+	int	i;
+
+	i = 1;
+	while (nb > 1)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
+}
+
+void	ft_putnbrn(int nb, int precision)
+{
+	int	r;
+	int	len;
+
+	len = ft_int_len(nb);
+	r = 0;
+	while (precision > len + r)
+	{
+		r++;
+		ft_putchar('0');
+	}
+	ft_putnbr(nb);
 }

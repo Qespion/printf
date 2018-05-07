@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   precision_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/04 10:18:39 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/07 12:16:08 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/07 13:38:23 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/07 17:45:25 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "locale.h"
 
 void	ft_printf(const char *format, ...);
 
-int	main()
+int main (void)
 {
-	ft_printf("chaine simple %d & %s & letter = %c \n", 86, "chaine simple x2", 'z');
-	setlocale(LC_ALL, "");
-	printf("chaine simple %S ", L"漢字");
-	return (0);
+	ft_printf("%.2000s\n", "coucou");
+	printf("%.2000f\n", (float)24);
+	return 0;
 }

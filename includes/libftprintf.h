@@ -101,12 +101,12 @@ int				ft_is_uppercase(char *str);
 void			ft_free_tab(char **tab);
 int				get_next_line(const int fd, char **line);
 void			ft_printf(const char *format, ...);
-void			ft_get_arg(char letter, void *str);
-void			prints(char *str);
-void			printnb(int str);
-void			printchar(char str);
-//int				ft_convert(int nb, int base);
-void			printhexa(int str);
-
-
+void			ft_get_arg(char letter, void *str, int precision);
+void			prints(char *str, int precision);
+void			printnb(int str, int precision);
+void			printchar(char str, int precision);
+void			printhexa(int str, int precision);
+const char		*end_of_int(const char *str);
+void			ft_putnbrn(int nb, int precision);
+void			ft_putstrn(char *str, int n);
 #endif

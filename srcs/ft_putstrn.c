@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putstrn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/04 10:18:39 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/07 12:16:08 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/07 15:57:55 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/07 17:25:27 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "locale.h"
+#include "libftprintf.h"
 
-void	ft_printf(const char *format, ...);
-
-int	main()
+void	ft_putstrn(char *str, int n)
 {
-	ft_printf("chaine simple %d & %s & letter = %c \n", 86, "chaine simple x2", 'z');
-	setlocale(LC_ALL, "");
-	printf("chaine simple %S ", L"漢字");
-	return (0);
+	int	r;
+
+	r = 0;
+	if (!str)
+		return ;
+	while (str[r] && r < n)
+	{
+		ft_putchar(str[r]);
+		r++;
+	}
 }
