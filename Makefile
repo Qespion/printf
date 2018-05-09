@@ -67,7 +67,8 @@ SRC=  srcs/ft_atoi.c  \
       srcs/ft_printable.c \
       srcs/tools.c  \
       srcs/ft_putstrn.c \
-      srcs/ft_putnbrn.c
+      srcs/ft_putnbrn.c \
+      srcs/ft_putcharn.c
 
 C_GREEN	=	"\033[32m"
 C_BLUE	=	"\033[36m"

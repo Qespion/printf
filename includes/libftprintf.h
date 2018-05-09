@@ -24,9 +24,13 @@
 typedef struct	s_list
 {
 	va_list			ap;
+	void			*str;
 	int				precision;
 	int				width;
-	void			*str;
+	int				negative;
+	int				positive;
+	int				zeros;
+	int				blank;
 }				t_list;
 
 typedef struct	s_struct
@@ -103,5 +107,6 @@ void			printchar(t_list *printef);
 void			printhexa(t_list *printef);
 const char		*end_of_int(const char *str);
 void			ft_putnbrn(t_list *printef);
-void			ft_putstrn(char *str, int n);
+void			ft_putstrn(t_list *printef);
+void			ft_putcharn(t_list *printef);
 #endif

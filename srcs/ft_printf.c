@@ -6,28 +6,35 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 11:52:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/09 17:25:43 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/09 19:14:03 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-void	ft_get_arg(char letter, t_list *printef)
+const char	*ft_flags(const char *format, t_list *printef)
 {
-	if (letter == 's')
-		prints(printef);
-	if (letter == 'd')
-		printnb(printef);
-	if (letter == 'c')
-		printchar(printef);
-	if (letter == 'p')
-		printhexa(printef);
+	printef->negative = 0;
+	printef->zeros = 0;
+	printef->blank = 0;
+	printef->positive = 0;
+	format++;
+	if (*format == '-')
+		printef->negative = 1;
+	else if (*format == '+')
+		printef->positive = 1;
+	else if (*format == '0')
+		printef->zeros = 1;
+	else if (*format == ' ')
+		printef->blank = 1;
+	ft_putstr("chaine\n");
+	//else if (*format == '#')
+	return (format);
 }
 
 const char	*ft_width(const char *format, t_list *printef)
 {
-	format++;
 	while ((*format >= '0' && *format <= '9') || *format == '*')
 	{
 		if (*format >= '0' && *format <= '9')
@@ -82,6 +89,7 @@ void	ft_printf(const char* format, ...)
 	{
 		if (*format == '%')
 		{
+		//	format = ft_flags(format, printef);
 			format = ft_width(format, printef);
 			format = ft_precision(format, printef);
 		}
@@ -89,6 +97,6 @@ void	ft_printf(const char* format, ...)
 		format++;
 	}
 	va_end(printef->ap);
-	printf("precision = %d\n", printef->precision);
-	printf("width = %d\n", printef->width);
+	//printf("precision = %d\n", printef->precision);
+	//printf("width = %d\n", printef->width);
 }

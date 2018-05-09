@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 17:12:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/09 15:55:07 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/09 18:09:22 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_putnbrn(t_list *printef)
 	r = 0;
 	if (len > printef->precision)
 		len_width = len;
-	if (len <= printef->precision)
+	else
 		len_width = printef->precision;
 	while (len_width < printef->width)
 	{
