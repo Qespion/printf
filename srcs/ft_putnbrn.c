@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 17:12:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/07 17:43:33 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/09 15:55:07 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,30 @@ int	ft_int_len(int nb)
 		nb /= 10;
 		i++;
 	}
-	return (i);
+	return (i - 1);
 }
 
-void	ft_putnbrn(int nb, int precision)
+void	ft_putnbrn(t_list *printef)
 {
 	int	r;
 	int	len;
+	int	len_width;
 
-	len = ft_int_len(nb);
+	len = ft_int_len((int)printef->str);
 	r = 0;
-	while (precision > len + r)
+	if (len > printef->precision)
+		len_width = len;
+	if (len <= printef->precision)
+		len_width = printef->precision;
+	while (len_width < printef->width)
+	{
+		ft_putchar (' ');
+		len_width++;
+	}
+	while (printef->precision > len + r)
 	{
 		r++;
 		ft_putchar('0');
 	}
-	ft_putnbr(nb);
+	ft_putnbr((int)printef->str);
 }

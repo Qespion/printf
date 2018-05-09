@@ -18,11 +18,9 @@ SRC=  srcs/ft_atoi.c  \
       srcs/ft_memccpy.c \
       srcs/ft_memalloc.c  \
       srcs/ft_strcat.c  \
-      srcs/ft_strlcat.c \
       srcs/ft_strncat.c \
       srcs/ft_strchr.c  \
       srcs/ft_strrchr.c \
-      srcs/ft_strlcat.c \
       srcs/ft_strnew.c  \
       srcs/ft_strdel.c  \
       srcs/ft_strclr.c  \
@@ -35,7 +33,7 @@ SRC=  srcs/ft_atoi.c  \
       srcs/ft_strtrim.c \
       srcs/ft_bzero.c \
       srcs/ft_memdel.c  \
-	    srcs/ft_strfjoin.c  \
+      srcs/ft_strfjoin.c  \
       srcs/ft_memchr.c  \
       srcs/ft_memmove.c \
       srcs/ft_memcpy.c  \
@@ -52,18 +50,12 @@ SRC=  srcs/ft_atoi.c  \
       srcs/ft_putnbr.c  \
       srcs/ft_strnstr.c \
       srcs/ft_strjoin.c \
-	    srcs/ft_strsub.c  \
+      srcs/ft_strsub.c  \
       srcs/ft_strsplit.c  \
       srcs/ft_memset.c  \
       srcs/ft_isdigit.c \
       srcs/ft_putchar_fd.c  \
       srcs/ft_putstr.c  \
-      srcs/ft_lstnew.c  \
-      srcs/ft_lstdelone.c \
-      srcs/ft_lstdel.c  \
-      srcs/ft_lstadd.c  \
-      srcs/ft_lstiter.c \
-      srcs/ft_lstmap.c  \
       srcs/ft_sort_int.c  \
       srcs/ft_power.c \
       srcs/ft_abs.c \

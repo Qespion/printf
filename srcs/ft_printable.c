@@ -6,36 +6,35 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 11:37:15 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/07 17:34:13 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/09 15:16:28 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	prints(char	*str, int precision)
+void	prints(t_list *printef)
 {
-	if (precision != -1)
-		ft_putstrn(str, precision);
+	if (printef->precision != -1 || printef->width != -1)
+		ft_putstrn(printef->str, printef->precision);
 	else
-		ft_putstr(str);
+		ft_putstr((char*)printef->str);
 }
 
-void	printnb(int str, int precision)
+void	printnb(t_list *printef)
 {
-	if (precision != -1)
-		ft_putnbrn(str, precision);
+	if (printef->precision != -1 || printef->width != -1)
+		ft_putnbrn(printef);
 	else
-		ft_putnbr(str);
+		ft_putnbr((int)printef->str);
 }
 
-void	printchar(char str, int precision)
+void	printchar(t_list *printef)
 {
-	(void)precision;
-	ft_putchar(str);
+	ft_putchar((char)printef->str);
 }
 
-void	printhexa(int str, int precision)
+void	printhexa(t_list *printef)
 {
-	(void)str;
-	(void)precision;
+	(void)printef->str;
+	(void)printef->precision;
 }

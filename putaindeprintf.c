@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrn.c                                       :+:      :+:    :+:   */
+/*   putaindeprintf.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oespion <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 15:57:55 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/09 13:54:22 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/09 14:23:35 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/09 15:12:46 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <stdio.h>
 
-void	ft_putstrn(char *str, int n)
+int	main()
 {
-	int	r;
-
-	r = 0;
-	if (!str)
-		return ;
-	while (str[r] && r < n)
-	{
-		ft_putchar(str[r]);
-		r++;
-	}
+	printf("%4.3d\n", 123);
+	return 0;
 }

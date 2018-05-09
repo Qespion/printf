@@ -23,9 +23,10 @@
 
 typedef struct	s_list
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
+	va_list			ap;
+	int				precision;
+	int				width;
+	void			*str;
 }				t_list;
 
 typedef struct	s_struct
@@ -74,7 +75,6 @@ char			*ft_strcat(char *dest, const char *src);
 char			*ft_strncat(char *dest, const char *src, size_t n);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
-size_t			ft_strlcat(char *dst, const char *src, size_t size);
 char			*ft_strnew(size_t size);
 void			ft_strdel(char **as);
 void			ft_strclr(char *s);
@@ -88,11 +88,6 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strtrim(char const *s);
 char			*ft_itoa(int n);
 t_list			*ft_lstnew(void const *content, size_t content_size);
-void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
-void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void			ft_lstadd(t_list **alst, t_list *new);
-void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void			ft_sort_int(int *lst, size_t len);
 int				ft_power(int n, int power);
 int				ft_abs(int nb);
@@ -101,12 +96,12 @@ int				ft_is_uppercase(char *str);
 void			ft_free_tab(char **tab);
 int				get_next_line(const int fd, char **line);
 void			ft_printf(const char *format, ...);
-void			ft_get_arg(char letter, void *str, int precision);
-void			prints(char *str, int precision);
-void			printnb(int str, int precision);
-void			printchar(char str, int precision);
-void			printhexa(int str, int precision);
+void			ft_get_arg(char letter, t_list *printef);
+void			prints(t_list *printef);
+void			printnb(t_list *printef);
+void			printchar(t_list *printef);
+void			printhexa(t_list *printef);
 const char		*end_of_int(const char *str);
-void			ft_putnbrn(int nb, int precision);
+void			ft_putnbrn(t_list *printef);
 void			ft_putstrn(char *str, int n);
 #endif

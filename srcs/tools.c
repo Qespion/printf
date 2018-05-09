@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 13:54:53 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/07 15:55:05 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/09 16:18:26 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_convert(int	nb, int base)
 const char	*end_of_int(const char *str)
 {
 	str++;
-	while ((*str >= '0' && *str <= '9') || *str == '.')
+	while (*str >= '0' && *str <= '9')
 		str++;
 	return (str);
 }

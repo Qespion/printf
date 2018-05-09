@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrn.c                                       :+:      :+:    :+:   */
+/*   2precision_test.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oespion <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 15:57:55 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/09 13:54:22 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/09 09:57:40 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/09 10:03:19 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <stdio.h>
 
-void	ft_putstrn(char *str, int n)
+int main (void)
 {
-	int	r;
+	int i = 10;
 
-	r = 0;
-	if (!str)
-		return ;
-	while (str[r] && r < n)
+	for (i = 0; i < 10; i++)
 	{
-		ft_putchar(str[r]);
-		r++;
+		printf ("|%.*d|\n", i, 10);
 	}
+	return 0;
 }
