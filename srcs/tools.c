@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 13:54:53 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/09 16:18:26 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/10 11:37:46 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,20 @@ const char	*end_of_int(const char *str)
 	while (*str >= '0' && *str <= '9')
 		str++;
 	return (str);
+}
+
+t_list	*create_struct(void)
+{
+	t_list	*printef;
+
+	if (!(printef = (t_list*)malloc(sizeof(t_list))))
+		return (0);
+	printef->precision = -1;
+	printef->width = -1;
+	printef->negative = 0;
+	printef->zeros = 0;
+	printef->blank = 0;
+	printef->positive = 0;
+	printef->sharp = 0;
+	return (printef);
 }

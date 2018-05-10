@@ -31,6 +31,7 @@ typedef struct	s_list
 	int				positive;
 	int				zeros;
 	int				blank;
+	int				sharp;
 }				t_list;
 
 typedef struct	s_struct
@@ -109,4 +110,5 @@ const char		*end_of_int(const char *str);
 void			ft_putnbrn(t_list *printef);
 void			ft_putstrn(t_list *printef);
 void			ft_putcharn(t_list *printef);
+t_list			*create_struct(void);
 #endif

@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 11:52:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/09 19:14:03 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/10 17:51:15 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 
 const char	*ft_flags(const char *format, t_list *printef)
 {
-	printef->negative = 0;
-	printef->zeros = 0;
-	printef->blank = 0;
-	printef->positive = 0;
-	format++;
 	if (*format == '-')
 		printef->negative = 1;
 	else if (*format == '+')
@@ -28,8 +23,14 @@ const char	*ft_flags(const char *format, t_list *printef)
 		printef->zeros = 1;
 	else if (*format == ' ')
 		printef->blank = 1;
-	ft_putstr("chaine\n");
-	//else if (*format == '#')
+	else if (*format == '#')
+		printef->sharp = 1;
+	if (*format == '#' || *format == ' ' || *format == '+' || *format == '-'
+			|| *format == '0')
+		format++;
+	if (*format == '#' || *format == ' ' || *format == '+' || *format == '-'
+			|| *format == '0')
+		return (ft_flags(format, printef));
 	return (format);
 }
 
@@ -80,16 +81,14 @@ void	ft_printf(const char* format, ...)
 {
 	t_list	*printef;
 
-	if (!(printef = (t_list*)malloc(sizeof(t_list))))
-		return ;
-	printef->precision = -1;
-	printef->width = -1;
+	printef = create_struct();
 	va_start(printef->ap, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
-		//	format = ft_flags(format, printef);
+			format++;
+			format = ft_flags(format, printef);
 			format = ft_width(format, printef);
 			format = ft_precision(format, printef);
 		}
@@ -97,6 +96,7 @@ void	ft_printf(const char* format, ...)
 		format++;
 	}
 	va_end(printef->ap);
-	//printf("precision = %d\n", printef->precision);
-	//printf("width = %d\n", printef->width);
+//	printf("is blank = %d\n", printef->blank);
+//	printf("precision = %d\n", printef->precision);
+//	printf("width = %d\n", printef->width);
 }
