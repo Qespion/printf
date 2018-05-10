@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 11:37:15 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/10 18:28:45 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/10 19:02:16 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,20 @@ void	printnb(t_list *printef)
 	}
 }
 
-void	printchar(t_list *printef)
+void	printchar(t_list *printef, char letter)
 {
-	if (printef->precision != -1 || printef->width != -1)
+	if ((printef->precision != -1 || printef->width != -1)
+			&& letter == '%')
+		ft_putcharnf(printef);
+	else if (printef->precision != -1 || printef->width != -1)
 		ft_putcharn(printef);
 	else
-		ft_putchar((char)printef->str);
+	{
+		if (letter == '%')
+			ft_putchar('%');
+		else
+			ft_putchar((char)printef->str);
+	}
 }
 
 void	printhexa(t_list *printef)
@@ -63,8 +71,8 @@ void	ft_get_arg(char letter, t_list *printef)
 		prints(printef);
 	if (letter == 'd')
 		printnb(printef);
-	if (letter == 'c')
-		printchar(printef);
+	if (letter == 'c' || letter == '%')
+		printchar(printef, letter);
 	if (letter == 'p')
 		printhexa(printef);
 }

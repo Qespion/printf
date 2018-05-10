@@ -104,11 +104,11 @@ void			ft_printf(const char *format, ...);
 void			ft_get_arg(char letter, t_list *printef);
 void			prints(t_list *printef);
 void			printnb(t_list *printef);
-void			printchar(t_list *printef);
 void			printhexa(t_list *printef);
 const char		*end_of_int(const char *str);
 void			ft_putnbrn(t_list *printef);
 void			ft_putstrn(t_list *printef);
+void			ft_putcharnf(t_list *printef);
 void			ft_putcharn(t_list *printef);
 t_list			*create_struct(void);
 #endif

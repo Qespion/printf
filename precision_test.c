@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:38:23 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/10 18:34:39 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/10 19:02:41 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_printf(const char *format, ...);
 
 int main (void)
 {
-	ft_printf("le mien    = % ++*30*.10s\n", 20, 200, "le login de maroland");
-	printf("le vrai    = % ++*30*.10s\n", 20, 200, "juste le login");
+	ft_printf("le mien =%25%\n");
+	printf("le vrai =%25%\n");
 	return 0;
 }
