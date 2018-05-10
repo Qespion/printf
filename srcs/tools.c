@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 13:54:53 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/10 11:37:46 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/10 19:16:02 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,11 @@ t_list	*create_struct(void)
 	printef->blank = 0;
 	printef->positive = 0;
 	printef->sharp = 0;
+	printef->h = 0;
+	printef->hh = 0;
+	printef->l = 0;
+	printef->ll = 0;
+	printef->j = 0;
+	printef->z = 0;
 	return (printef);
 }

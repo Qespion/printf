@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 11:52:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/10 18:55:06 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/10 19:23:45 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ const char	*ft_width(const char *format, t_list *printef)
 	return (format);
 }
 
-const char	*ft_precision(const char* format, t_list *printef)
+const char	*ft_precision(const char *format, t_list *printef)
 {
 	if (*format == '.')
 	{
@@ -77,6 +77,26 @@ const char	*ft_precision(const char* format, t_list *printef)
 	return (format);
 }
 
+const char	*ft_lenght_mod(const char *format, printef)
+{
+	if (*format == 'h' && format[1] == 'h')
+		printef->hh = 1;
+	else if (*format == 'l' && format[1] == 'l')
+		printef->ll = 1;
+	else if (*format == 'h')
+		printef->h = 1;
+	else if (*format == 'l')
+		printef->l = 1;
+	else if (*format == 'j')
+		printef->j = 1;
+	else if (*format == 'z')
+		printef->z = 1;
+	while (*fomat == 'h' || *fomat == 'j' || *format == 'l'
+				*format == 'z')
+		format++;
+	return (format);
+}
+
 void	ft_printf(const char* format, ...)
 {
 	t_list	*printef;
@@ -91,6 +111,7 @@ void	ft_printf(const char* format, ...)
 			format = ft_flags(format, printef);
 			format = ft_width(format, printef);
 			format = ft_precision(format, printef);
+			format = ft_lenght_mod(format, printef);
 		}
 		ft_putchar((char)*format);
 		format++;
