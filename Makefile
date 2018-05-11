@@ -9,7 +9,6 @@ SRC=  srcs/ft_atoi.c  \
       srcs/ft_strncmp.c \
       srcs/ft_isalpha.c \
       srcs/ft_strdup.c  \
-      srcs/ft_putchar.c \
       srcs/ft_strlen.c  \
       srcs/ft_strncpy.c \
       srcs/ft_isprint.c \
@@ -68,7 +67,10 @@ SRC=  srcs/ft_atoi.c  \
       srcs/tools.c  \
       srcs/ft_putstrn.c \
       srcs/ft_putnbrn.c \
-      srcs/ft_putcharn.c
+      srcs/ft_putcharn.c \
+      srcs/convert_base.c \
+      srcs/printable_adv.c \
+      srcs/ft_puthexan.c
 
 C_GREEN	=	"\033[32m"
 C_BLUE	=	"\033[36m"

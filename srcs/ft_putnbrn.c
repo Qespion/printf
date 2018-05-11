@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 17:12:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/10 17:43:11 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/11 19:08:12 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,15 @@ int	ft_int_len(int nb)
 void	ft_pos(t_list *printef, int neg)
 {
 	if (printef->positive && !neg)
+	{
+		printef->nbout++;
 		ft_putchar('+');
+	}
 	if (neg)
+	{
+		printef->nbout++;
 		ft_putchar('-');
+	}
 	neg = 0;
 	printef->positive = 0;
 }
@@ -51,6 +57,7 @@ void	ft_get_width(t_list *printef, int nbr)
 	while (max < width_tmp)
 	{
 		width_tmp--;
+		printef->nbout++;
 		ft_putchar(spaces);
 	}
 }
@@ -86,9 +93,11 @@ void	ft_putnbrn(t_list *printef)
 		ft_get_precision(nbr, printef);
 		ft_putnbr(nbr);
 		ft_get_width(printef, nbr);
+		printef->nbout += int_len(nbr, 10);
 	}
 	else
 	{
+		printef->nbout += int_len(nbr, 10);
 		ft_get_width(printef, nbr);
 		ft_pos(printef, neg);
 		ft_get_precision(nbr, printef);

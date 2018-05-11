@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 13:54:53 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/10 19:16:02 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/11 18:37:15 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ t_list	*create_struct(void)
 
 	if (!(printef = (t_list*)malloc(sizeof(t_list))))
 		return (0);
+	printef->nbout = 0;
 	printef->precision = -1;
 	printef->width = -1;
+	printef->increment = 0;
 	printef->negative = 0;
 	printef->zeros = 0;
 	printef->blank = 0;
@@ -48,3 +50,24 @@ t_list	*create_struct(void)
 	printef->z = 0;
 	return (printef);
 }
+
+t_list	*reset_struct(t_list *printef)
+{
+	printef->precision = -1;
+	printef->width = -1;
+	printef->negative = 0;
+	printef->zeros = 0;
+	printef->blank = 0;
+	printef->increment = 0;
+	printef->positive = 0;
+	printef->sharp = 0;
+	printef->h = 0;
+	printef->hh = 0;
+	printef->l = 0;
+	printef->ll = 0;
+	printef->j = 0;
+	printef->z = 0;
+	return (printef);
+}
+//1000 0000
+//0x80

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   precision_test.c                                   :+:      :+:    :+:   */
+/*   printable_adv.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 13:38:23 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/11 19:11:07 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/11 12:34:52 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/11 15:47:13 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libftprintf.h"
 
-void	ft_printf(const char *format, ...);
-
-int main (void)
+void	printbinary(t_list *printef)
 {
-	ft_printf("%21%reg");
-	printf("\nstdout = %d\n", printf("%21%reg"));
-	return (0);
+	char	*bin;
+
+	bin = ft_convert_base((int)printef->str, 2);
 }

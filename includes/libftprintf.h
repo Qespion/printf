@@ -25,6 +25,8 @@ typedef struct	s_list
 {
 	va_list			ap;
 	void			*str;
+	int				increment;
+	int				nbout;
 	int				precision;
 	int				width;
 	int				negative;
@@ -32,6 +34,12 @@ typedef struct	s_list
 	int				zeros;
 	int				blank;
 	int				sharp;
+	int				h;
+	int				hh;
+	int				l;
+	int				ll;
+	int				j;
+	int				z;
 }				t_list;
 
 typedef struct	s_struct
@@ -100,7 +108,7 @@ int				ft_is_lowercase(char *str);
 int				ft_is_uppercase(char *str);
 void			ft_free_tab(char **tab);
 int				get_next_line(const int fd, char **line);
-void			ft_printf(const char *format, ...);
+int				ft_printf(const char *format, ...);
 void			ft_get_arg(char letter, t_list *printef);
 void			prints(t_list *printef);
 void			printnb(t_list *printef);
@@ -111,4 +119,11 @@ void			ft_putstrn(t_list *printef);
 void			ft_putcharnf(t_list *printef);
 void			ft_putcharn(t_list *printef);
 t_list			*create_struct(void);
+char			*ft_convert_base(int nb, int base);
+void			printbinary(t_list *printef);
+void			write_with_precision(char *str, t_list *printef);
+void			ft_puthexan(t_list *printef, char *hexa);
+t_list			*reset_struct(t_list *printef);
+int				int_len(int nb, int base);
+
 #endif
