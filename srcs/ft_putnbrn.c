@@ -6,101 +6,115 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 17:12:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/11 19:08:12 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/14 19:53:22 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-int	ft_int_len(int nb)
+void	ft_pos(t_list *p)
 {
-	int	i;
-
-	i = 1;
-	while (nb > 1)
+	if (p->positive && !p->neg)
 	{
-		nb /= 10;
-		i++;
-	}
-	return (i - 1);
-}
-
-void	ft_pos(t_list *printef, int neg)
-{
-	if (printef->positive && !neg)
-	{
-		printef->nbout++;
+		p->nbout++;
 		ft_putchar('+');
 	}
-	if (neg)
+	if (p->neg)
 	{
-		printef->nbout++;
+		p->nbout++;
 		ft_putchar('-');
 	}
-	neg = 0;
-	printef->positive = 0;
+	p->neg = 0;
+	p->positive = 0;
 }
 
-void	ft_get_width(t_list *printef, int nbr)
+void	ft_get_width(t_list *p, unsigned int nbr)
 {
 	int	spaces;
 	int	max;
 	int	width_tmp;
 
-	width_tmp = printef->width;
+	max = 0;
+	width_tmp = p->width;
 	spaces = ' ';
-	if (ft_int_len(nbr) > printef->precision)
-		max = ft_int_len(nbr);
-	else
-		max = printef->precision;
-	while (max < width_tmp)
+	p->neg ? max = 1 : 0;
+	p->zeros && p->precision == -1 ? spaces = '0' : 0;
+	if (spaces == '0' && p->neg && !p->negative)
 	{
-		width_tmp--;
-		printef->nbout++;
+		if (p->positive)
+		{
+			p->nbout++;
+			ft_putchar('+');
+		}
+		else
+			ft_pos(p);
+	}
+	spaces == '0' && !p->negative && p->positive ? ft_pos(p): 0;
+	if (ft_int_len(nbr) > p->precision)
+		max += ft_int_len(nbr);
+	else
+		max += p->precision;
+	while (max < width_tmp--)
+	{
+		p->nbout++;
 		ft_putchar(spaces);
 	}
 }
 
-void	ft_get_precision(int nbr, t_list *printef)
+void	ft_get_precision(unsigned int nbr, t_list *p)
 {
 	int	precision_tmp;
 
-	precision_tmp = printef->precision;
+	if (p->precision < p->width)
+		precision_tmp = p->precision - ft_int_len(nbr);
+	else
+		precision_tmp = p->precision;
+	p->neg ? ft_pos(p): 0;
+	p->positive ? ft_pos(p) : 0;
 	while (ft_int_len(nbr) < precision_tmp)
 	{
 		ft_putchar('0');
+		p->nbout++;
 		precision_tmp--;
 	}
 }
 
-void	ft_putnbrn(t_list *printef)
+void	ft_putnbrn(t_list *p, int nbr)
 {
-	int		nbr;
-	int		neg;
-
-	nbr = (int)printef->str;
-	neg = 0;
 	if (nbr < 0)
-	{
-		printef->width--;
-		neg = 1;
-	}
+		p->neg = 1;
 	nbr = ft_abs(nbr);
-	if (printef->negative)
+	if (p->negative)
 	{
-		ft_pos(printef, neg);
-		ft_get_precision(nbr, printef);
+		ft_get_precision(nbr, p);
 		ft_putnbr(nbr);
-		ft_get_width(printef, nbr);
-		printef->nbout += int_len(nbr, 10);
+		ft_get_width(p, nbr);
+		p->nbout += int_len(nbr, 10);
 	}
 	else
 	{
-		printef->nbout += int_len(nbr, 10);
-		ft_get_width(printef, nbr);
-		ft_pos(printef, neg);
-		ft_get_precision(nbr, printef);
+		p->nbout += int_len(nbr, 10);
+		ft_get_width(p, nbr);
+		ft_get_precision(nbr, p);
 		ft_putnbr(nbr);
+	}
+}
+
+void	ft_putnbrnu(t_list *p, unsigned int nbr)
+{
+	if (p->negative)
+	{
+		ft_get_precision(nbr, p);
+		ft_putnbru(nbr);
+		ft_get_width(p, nbr);
+		p->nbout += int_len(nbr, 10);
+	}
+	else
+	{
+		p->nbout += int_len(nbr, 10);
+		ft_get_width(p, nbr);
+		ft_get_precision(nbr, p);
+		ft_putnbru(nbr);
 	}
 }

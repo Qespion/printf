@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 14:51:13 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/03 16:16:32 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/14 14:46:24 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ char	*ft_strfjoin(char const *s1, char const *s2)
 		return (NULL);
 	ft_bzero(str, len + 1);
 	ft_strcat(str, s1);
-	if (s1)
+	ft_strcat(str, s2);
+	if (s2)
 	{
 		free((char*)s1);
 		s1 = NULL;
 	}
-	ft_strcat(str, s2);
 	return (str);
 }

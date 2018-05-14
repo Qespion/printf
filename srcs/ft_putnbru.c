@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   precision_test.c                                   :+:      :+:    :+:   */
+/*   ft_putnbru.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 13:38:23 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/14 19:53:36 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/12 17:03:11 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/12 17:38:47 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libftprintf.h"
 
-void	ft_printf(const char *format, ...);
-
-int main()
+void	ft_putnbru(unsigned int nb)
 {
-	ft_printf("%05.d", -42);
-	printf("%c", '\n');
-	printf("\nstdout = %d\n", printf("%05.d", -42));
-	return (0);
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar('0' + nb);
 }

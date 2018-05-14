@@ -6,94 +6,105 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 11:37:15 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/11 19:10:21 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/14 19:54:16 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-void	prints(t_list *printef)
+void	prints(t_list *p)
 {
-	if (printef->precision != -1 || printef->width != -1)
-		ft_putstrn(printef);
+	char*	str;
+
+	str = va_arg(p->ap, char*);
+	if (p->precision != -1 || p->width != -1)
+		ft_putstrn(p, str);
 	else
 	{
-		printef->nbout += ft_strlen((char*)printef->str);
-		ft_putstr((char*)printef->str);
+		p->nbout += ft_strlen(str);
+		ft_putstr(str);
 	}
 }
 
-void	printnb(t_list *printef)
+void	printnb(t_list *p)
 {
-	if (printef->blank == 1 && printef->positive == 0)
+	int	nbr;
+
+	nbr = va_arg(p->ap, int);
+	if (p->blank == 1 && p->positive == 0 && nbr > 0)
 	{
 		ft_putchar(' ');
-		printef->width--;
+		p->width--;
+		p->nbout++;
 	}
-	if (printef->positive && printef->width != -1)
-		printef->width--;
-	if (printef->precision != -1 || printef->width != -1)
-		ft_putnbrn(printef);
+	p->positive && p->width != -1 ? p->width-- : 0;
+	if (!p->precision && nbr == 0)
+	{
+		ft_get_width(p, 0);
+		return ;
+	}
+	if (p->precision != -1 || p->width != -1)
+		ft_putnbrn(p, nbr);
 	else
 	{
-		if (printef->positive)
+		if (p->positive && nbr >= 0)
 		{
-			if ((int)printef->str >= 0)
-			{
-				printef->nbout++;
-				ft_putchar('+');
-			}
+			p->nbout++;
+			ft_putchar('+');
 		}
-		printef->nbout += int_len((int)printef->str, 10);
-		ft_putnbr((int)printef->str);
+		nbr < 0 ? p->nbout++ : 0;
+		p->nbout += int_len(ft_abs(nbr), 10);
+		ft_putnbr(nbr);
 	}
 }
 
-void	printchar(t_list *printef, char letter)
+void	printchar(t_list *p, char letter)
 {
-	if ((printef->precision != -1 || printef->width != -1)
+	char c;
+	if (letter != '%')
+		c = va_arg(p->ap, int);
+	if ((p->precision != -1 || p->width != -1)
 			&& letter == '%')
-		ft_putcharnf(printef);
-	else if (printef->precision != -1 || printef->width != -1)
-		ft_putcharn(printef);
+		ft_putcharnf(p);
+	else if (p->precision != -1 || p->width != -1)
+	{
+		ft_putcharn(p, c);
+	}
 	else
 	{
+		if (letter == '%')
+			ft_putchar('%');
 		if (letter != '%')
 		{
-			printef->nbout++;
-			ft_putchar((char)printef->str);
+			p->nbout++;
+			ft_putchar(c);
 		}
 	}
 }
 
-void	printhexa(t_list *printef)
-{
-	char	*hexa;
-
-	hexa = ft_convert_base((int)printef->str, 16);
-	if (printef->precision != -1 || printef->width != -1)
-		ft_puthexan(printef, hexa);
-	else
-		ft_putstr(hexa);
-}
-
-void	ft_get_arg(char letter, t_list *printef)
+void	ft_get_arg(char letter, t_list *p)
 {
 	if (letter == 's' || letter == 'd' || letter == 'c' || letter == 'x'
-			|| letter == 'b' || letter == 'i')
-	{
-		printef->increment = 1;
-		printef->str = va_arg(printef->ap, void*);
-	}
+			|| letter == 'b' || letter == 'i' || letter == 'X' || letter == 'u'
+			|| letter == 'o' || letter == 'O')
+		p->increment = 1;
 	if (letter == 's')
-		prints(printef);
+		prints(p);
 	else if (letter == 'd' || letter == 'i')
-		printnb(printef);
+		printnb(p);
 	else if (letter == 'c' || letter == '%')
-		printchar(printef, letter);
+		printchar(p, letter);
 	else if (letter == 'x')
-		printhexa(printef);
+		printhexa(p, 0);
 	else if (letter == 'b')
-		printbinary(printef);
+		printbinary(p);
+	else if (letter == 'X')
+		printhexa(p, 1);
+	else if (letter == 'u')
+		printunsigned(p);
+	else if (letter == 'o')
+		printoctal(p, 0);
+	else if (letter == 'O')
+		printoctal(p, 1);
 }

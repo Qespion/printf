@@ -6,59 +6,57 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:57:55 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/11 16:48:03 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/14 19:09:57 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-void	write_with_precision(char *str, t_list *printef)
+void	write_with_precision(char *str, t_list *p)
 {
 	int	r;
 
 	r = 0;
-	if (printef->precision == -1)
+	if (p->precision == -1)
 		while (str[r])
 		{
-			printef->nbout++;
+			p->nbout++;
 			ft_putchar(str[r++]);
 		}
 	else
-		while (str[r] && r < printef->precision)
+		while (str[r] && r < p->precision)
 		{
-			printef->nbout++;
+			p->nbout++;
 			ft_putchar(str[r++]);
 		}
 }
 
-void	ft_putstrn(t_list *printef)
+void	ft_putstrn(t_list *p, char *str)
 {
 	int		len_width;
-	char	*str;
 	char	spaces;
 
 	spaces = ' ';
-	if (printef->zeros && printef->negative == 0)
+	if (p->zeros && p->negative == 0)
 		spaces = '0';
-	if (!printef->str)
+	if (!str)
 		return ;
-	len_width = printef->precision + 1;
-	if (len_width > (int)ft_strlen((char*)printef->str)
-			|| printef->precision == -1)
-		len_width = ft_strlen((char*)printef->str) + 1;
-	if (printef->negative == 0)
-		while (len_width++ <= printef->width)
+	len_width = p->precision + 1;
+	if (len_width > (int)ft_strlen(str)
+			|| p->precision == -1)
+		len_width = ft_strlen(str) + 1;
+	if (p->negative == 0)
+		while (len_width++ <= p->width)
 		{
-			printef->nbout++;
+			p->nbout++;
 			ft_putchar(spaces);
 		}
-	str = (char*)printef->str;
-	write_with_precision(str, printef);
-	if (printef->negative == 1)
-		while (len_width++ <= printef->width)
+	write_with_precision(str, p);
+	if (p->negative == 1)
+		while (len_width++ <= p->width)
 		{
-			printef->nbout++;
+			p->nbout++;
 			ft_putchar(spaces);
 		}
 }

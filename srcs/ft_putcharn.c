@@ -6,53 +6,60 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 18:09:47 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/11 19:11:56 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/14 17:47:49 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "libftprintf.h"
 
-void	ft_putcharn(t_list *printef)
+void	ft_putcharn(t_list *p, char c)
 {
 	int		len_width;
-	char	*str;
 	char	spaces;
 
 	spaces = ' ';
-	if (printef->zeros && printef->negative == 0)
+	if (p->zeros && p->negative == 0)
 		spaces = '0';
 		len_width = 1;
-	if (printef->negative == 0)
-		while (len_width++ < printef->width)
+	if (p->negative == 0)
+		while (len_width++ < p->width)
+		{
+			p->nbout++;
 			ft_putchar(spaces);
-	str = (char*)printef->str;
-	ft_putchar((char)printef->str);
-	if (printef->negative == 1)
-		while (len_width++ < printef->width)
+		}
+	ft_putchar(c);
+	p->nbout++;
+	if (p->negative == 1)
+		while (len_width++ < p->width)
+		{
+			p->nbout++;
 			ft_putchar(spaces);
+		}
 }
 
-void	ft_putcharnf(t_list *printef)
+void	ft_putcharnf(t_list *p)
 {
 	int		len_width;
 	char	*str;
 	char	spaces;
 
 	spaces = ' ';
-	if (printef->zeros && printef->negative == 0)
+	if (p->zeros && p->negative == 0)
 		spaces = '0';
 	len_width = 1;
-	if (printef->negative == 0)
-		while (len_width++ < printef->width)
+	if (p->negative == 0)
+		while (len_width++ < p->width)
 		{
-			printef->nbout++;
+			p->nbout++;
 			ft_putchar(spaces);
 		}
-	str = (char*)printef->str;
-	if (printef->negative == 1)
-		while (len_width++ < printef->width)
+	str = (char*)p->str;
+	ft_putchar('%');
+	if (p->negative == 1)
+		while (len_width++ < p->width)
 		{
-			printef->nbout++;
+			p->nbout++;
 			ft_putchar(spaces);
 		}
 }

@@ -6,57 +6,76 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 14:42:06 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/11 15:47:13 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/14 18:15:33 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
-void	ft_gwidth(char *hexa, t_list *printef)
+void	ft_gwidth(char *hexa, t_list *p, int oct)
 {
 	int	max;
 	int	width_tmp;
+	char	spaces;
 
-	width_tmp = printef->width;
-	if ((int)ft_strlen(hexa) > printef->precision)
+	spaces = ' ';
+	width_tmp = p->width;
+	p->zeros ? spaces = '0' : 0;
+	if ((int)ft_strlen(hexa) > p->precision)
 		max = (int)ft_strlen(hexa);
 	else
-		max = printef->precision;
+		max = p->precision;
+	if (p->sharp && *hexa != '0')
+	{
+		max++;
+		oct ? 0 : max++;
+	}
 	while (max < width_tmp)
 	{
 		width_tmp--;
-		printef->nbout++;
-		ft_putchar(' ');
+		p->nbout++;
+		ft_putchar(spaces);
 	}
 }
 
-void	ft_gprecision(char *hexa, t_list *printef)
+void	ft_gprecision(char *hexa, t_list *p)
 {
 	int	tmp;
 
-	tmp = printef->precision;
+	tmp = p->precision;
 	while ((int)ft_strlen(hexa) < tmp)
 	{
-		printef->nbout++;
+		p->nbout++;
 		ft_putchar('0');
 		tmp--;
 	}
 }
 
-void	ft_puthexan(t_list *printef, char *hexa)
+void	ft_puthexan(t_list *p, char *hexa, int oct)
 {
-	if (printef->negative)
+	if (p->negative)
 	{
-		ft_gprecision(hexa, printef);
+		if (p->sharp && *hexa != '0')
+		{
+			oct ? ft_putchar('0') : ft_putstr("0x");
+			p->nbout += 2;
+		}
+		ft_gprecision(hexa, p);
 		ft_putstr(hexa);
-		ft_gwidth(hexa, printef);
-		printef->nbout += ft_strlen(hexa);
+		ft_gwidth(hexa, p, oct);
+		p->nbout += ft_strlen(hexa);
 	}
 	else
 	{
-		ft_gwidth(hexa, printef);
-		ft_gprecision(hexa, printef);
+		ft_gwidth(hexa, p, oct);
+		if (p->sharp && *hexa != '0')
+		{
+			oct ? ft_putchar('0') : ft_putstr("0x");
+			p->nbout += 2;
+		}
+		ft_gprecision(hexa, p);
 		ft_putstr(hexa);
-		printef->nbout += ft_strlen(hexa);
+		p->nbout += ft_strlen(hexa);
 	}
 }
