@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 14:42:06 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/14 18:15:33 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/15 18:17:08 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_gwidth(char *hexa, t_list *p, int oct)
 
 	spaces = ' ';
 	width_tmp = p->width;
-	p->zeros ? spaces = '0' : 0;
+	p->zeros && !p->negative ? spaces = '0' : 0;
 	if ((int)ft_strlen(hexa) > p->precision)
 		max = (int)ft_strlen(hexa);
 	else
@@ -44,6 +44,10 @@ void	ft_gprecision(char *hexa, t_list *p)
 	int	tmp;
 
 	tmp = p->precision;
+	*hexa == '0' && p->sharp ? ft_putchar('0') : 0;
+	*hexa == '0' && p->sharp ? p->nbout++ : 0;
+	*hexa == '0' && p->sharp ? p->nbout++ : 0;
+	*hexa == '0' && !p->sharp && p->width != -1? ft_putchar(' ') : 0;
 	while ((int)ft_strlen(hexa) < tmp)
 	{
 		p->nbout++;
@@ -62,20 +66,21 @@ void	ft_puthexan(t_list *p, char *hexa, int oct)
 			p->nbout += 2;
 		}
 		ft_gprecision(hexa, p);
-		ft_putstr(hexa);
+		*hexa == '0' ? 0 : ft_putstr(hexa);
 		ft_gwidth(hexa, p, oct);
 		p->nbout += ft_strlen(hexa);
 	}
 	else
 	{
-		ft_gwidth(hexa, p, oct);
+		!p->zeros ? ft_gwidth(hexa, p, oct) : 0;
 		if (p->sharp && *hexa != '0')
 		{
 			oct ? ft_putchar('0') : ft_putstr("0x");
 			p->nbout += 2;
 		}
+		p->zeros ? ft_gwidth(hexa, p, oct) : 0;
 		ft_gprecision(hexa, p);
-		ft_putstr(hexa);
+		*hexa == '0' ? 0 : ft_putstr(hexa);
 		p->nbout += ft_strlen(hexa);
 	}
 }

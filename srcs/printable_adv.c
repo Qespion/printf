@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 12:34:52 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/14 18:17:15 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/15 18:15:07 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,18 @@ void	printoctal(t_list *p, int maj)
 	unsigned int nb;
 
 	nb = va_arg(p->ap, unsigned int);
+//	printf("\nwidt = %d\n", p->width);
+//	printf("precision = %d\n", p->precision);
+//	printf("nb = %d\n", nb);
+	p->width == -1 && p->precision == 0 && nb == 0 ? p->nbout-- : 0;
 	hexa = ft_convert_base(nb, 8);
 	maj ? hexa = ft_toupper(hexa) : 0;
 	!*hexa ? hexa = "0" : 0;
-	if (*hexa == '0' && p->precision == 0)
-		return ;
 	if (p->precision != -1 || p->width != -1)
+	{
+		p->sharp ? p->nbout-- : 0;
 		ft_puthexan(p, hexa, 1);
+	}
 	else
 	{
 		p->sharp ? ft_putstr("0") : p->nbout-- ;
@@ -77,12 +82,12 @@ void	printunsigned(t_list *p)
 	unsigned int nbr;
 
 	nbr = va_arg(p->ap, unsigned int);
-	if (p->blank == 1 && p->positive == 0)
+	/*if (p->blank == 1 && p->positive == 0)
 	{
 		ft_putchar(' ');
 		p->width--;
 		p->nbout++;
-	}
+	}*/
 	if (p->positive && p->width != -1)
 		p->width--;
 	if (p->precision != -1 || p->width != -1)

@@ -6,11 +6,12 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 13:54:53 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/14 19:45:41 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/15 14:12:14 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
 int	ft_convert(int	nb, int base)
 {
@@ -32,6 +33,8 @@ int	ft_int_len(unsigned int nb)
 	int	i;
 
 	i = 1;
+	if (nb == 0)
+		return (1);
 	while (nb > 0)
 	{
 		nb /= 10;

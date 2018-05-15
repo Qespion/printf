@@ -101,7 +101,6 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strtrim(char const *s);
 char			*ft_itoa(int n);
-t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_sort_int(int *lst, size_t len);
 int				ft_power(int n, int power);
 int				ft_abs(int nb);
@@ -132,5 +131,6 @@ void			ft_putnbru(unsigned int nb);
 void			ft_putnbrnu(t_list *p, unsigned int nbr);
 void			ft_get_width(t_list *p, unsigned int nbr);
 void			printoctal(t_list *p, int maj);
+void			ft_gwidth(char *hexa, t_list *p, int oct);
 
 #endif

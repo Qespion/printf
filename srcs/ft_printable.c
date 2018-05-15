@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 11:37:15 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/14 19:54:16 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/15 14:41:15 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	printnb(t_list *p)
 			p->nbout++;
 			ft_putchar('+');
 		}
-		nbr < 0 ? p->nbout++ : 0;
+		nbr <= 0 ? p->nbout++ : 0;
 		p->nbout += int_len(ft_abs(nbr), 10);
 		ft_putnbr(nbr);
 	}

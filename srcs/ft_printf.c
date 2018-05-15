@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 11:52:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/14 19:53:44 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/15 18:19:15 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,12 @@ int	ft_printf(const char* format, ...)
 			format = ft_precision(format, p);
 			format = ft_lenght_mod(format, p);
 		}
+		*format == '%' ? p->nbout++ : 0;
 		p->increment ? format++ : 0;
-		if (*format != '\0')
+		if (*format != '\0' && *format != '%')
 		{
 			p->nbout++;
-			*format != '%' ? ft_putchar((char)*format) : 0;
+			ft_putchar((char)*format);
 			format++;
 		}
 		p = reset_struct(p);

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2precision_test.c                                  :+:      :+:    :+:   */
+/*   precision_test.c        2                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oespion <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 09:57:40 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/09 10:03:19 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/07 13:38:23 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/15 18:03:11 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int main (void)
-{
-	int i = 10;
+void	ft_printf(const char *format, ...);
 
-	for (i = 0; i < 10; i++)
-	{
-		printf ("|%.*d|\n", i, 10);
-	}
-	return 0;
+int main()
+{
+	ft_printf("@moulitest: %.o %.0o", 0, 0);
+	printf("%c", '\n');
+	printf("\nstdout = %d\n", printf("@moulitest: %.o %.0o", 0, 0));
+	return (0);
 }
