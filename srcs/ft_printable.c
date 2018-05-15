@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 11:37:15 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/15 14:41:15 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/15 19:13:24 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,35 @@ void	prints(t_list *p)
 	char*	str;
 
 	str = va_arg(p->ap, char*);
+	if (!str)
+	{
+		ft_putstr("(null)");
+		p->nbout += 6;
+		return ;
+	}
 	if (p->precision != -1 || p->width != -1)
 		ft_putstrn(p, str);
 	else
 	{
 		p->nbout += ft_strlen(str);
 		ft_putstr(str);
+	}
+}
+
+void	printfnb(t_list *p, int nbr)
+{
+	if (p->precision != -1 || p->width != -1)
+		ft_putnbrn(p, nbr);
+	else
+	{
+		if (p->positive && nbr >= 0)
+		{
+			p->nbout++;
+			ft_putchar('+');
+		}
+		nbr <= 0 ? p->nbout++ : 0;
+		p->nbout += int_len(ft_abs(nbr), 10);
+		ft_putnbr(nbr);
 	}
 }
 
@@ -44,44 +67,9 @@ void	printnb(t_list *p)
 		ft_get_width(p, 0);
 		return ;
 	}
-	if (p->precision != -1 || p->width != -1)
-		ft_putnbrn(p, nbr);
-	else
-	{
-		if (p->positive && nbr >= 0)
-		{
-			p->nbout++;
-			ft_putchar('+');
-		}
-		nbr <= 0 ? p->nbout++ : 0;
-		p->nbout += int_len(ft_abs(nbr), 10);
-		ft_putnbr(nbr);
-	}
+	printfnb(p, nbr);
 }
 
-void	printchar(t_list *p, char letter)
-{
-	char c;
-	if (letter != '%')
-		c = va_arg(p->ap, int);
-	if ((p->precision != -1 || p->width != -1)
-			&& letter == '%')
-		ft_putcharnf(p);
-	else if (p->precision != -1 || p->width != -1)
-	{
-		ft_putcharn(p, c);
-	}
-	else
-	{
-		if (letter == '%')
-			ft_putchar('%');
-		if (letter != '%')
-		{
-			p->nbout++;
-			ft_putchar(c);
-		}
-	}
-}
 
 void	ft_get_arg(char letter, t_list *p)
 {

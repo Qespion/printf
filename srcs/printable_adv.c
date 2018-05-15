@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 12:34:52 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/15 18:15:07 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/15 19:31:35 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ void	printhexa(t_list *p, int maj)
 	maj ? hexa = ft_toupper(hexa) : 0;
 	!*hexa ? hexa = "0" : 0;
 	if (*hexa == '0' && p->precision == 0)
+	{
+		p->width++;
+		ft_gwidth(hexa, p, 0);
 		return ;
+	}
 	if (p->precision != -1 || p->width != -1)
 		ft_puthexan(p, hexa, 0);
 	else
@@ -82,12 +86,7 @@ void	printunsigned(t_list *p)
 	unsigned int nbr;
 
 	nbr = va_arg(p->ap, unsigned int);
-	/*if (p->blank == 1 && p->positive == 0)
-	{
-		ft_putchar(' ');
-		p->width--;
-		p->nbout++;
-	}*/
+	nbr == 0 ? p->nbout++ : 0;
 	if (p->positive && p->width != -1)
 		p->width--;
 	if (p->precision != -1 || p->width != -1)
@@ -96,5 +95,29 @@ void	printunsigned(t_list *p)
 	{
 		p->nbout += int_len((int)nbr, 10);
 		ft_putnbru(nbr);
+	}
+}
+
+void	printchar(t_list *p, char letter)
+{
+	char c;
+	if (letter != '%')
+		c = va_arg(p->ap, int);
+	if ((p->precision != -1 || p->width != -1)
+			&& letter == '%')
+		ft_putcharnf(p);
+	else if (p->precision != -1 || p->width != -1)
+	{
+		ft_putcharn(p, c);
+	}
+	else
+	{
+		if (letter == '%')
+			ft_putchar('%');
+		if (letter != '%')
+		{
+			p->nbout++;
+			ft_putchar(c);
+		}
 	}
 }

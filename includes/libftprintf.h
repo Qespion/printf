@@ -132,5 +132,6 @@ void			ft_putnbrnu(t_list *p, unsigned int nbr);
 void			ft_get_width(t_list *p, unsigned int nbr);
 void			printoctal(t_list *p, int maj);
 void			ft_gwidth(char *hexa, t_list *p, int oct);
+void			printchar(t_list *p, char letter);
 
 #endif
