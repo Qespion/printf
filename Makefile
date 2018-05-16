@@ -71,7 +71,8 @@ SRC=  srcs/ft_atoi.c  \
       srcs/convert_base.c \
       srcs/printable_adv.c \
       srcs/ft_puthexan.c \
-      srcs/ft_putnbru.c
+      srcs/ft_putnbru.c \
+      srcs/convert_base_int.c
 
 C_GREEN	=	"\033[32m"
 C_BLUE	=	"\033[36m"

@@ -119,12 +119,12 @@ void			ft_putstrn(t_list *p, char *str);
 void			ft_putcharnf(t_list *p);
 void			ft_putcharn(t_list *p, char c);
 t_list			*create_struct(void);
-char			*ft_convert_base(unsigned int nb, int base);
+char			*ft_convert_base(uintmax_t nb, int base);
 void			printbinary(t_list *p);
 void			write_with_precision(char *str, t_list *p);
 void			ft_puthexan(t_list *p, char *hexa, int oct);
 t_list			*reset_struct(t_list *p);
-int				int_len(unsigned int nb, int base);
+int				int_len(uintmax_t nb, int base);
 int				ft_int_len(unsigned int nb);
 void			printunsigned(t_list *p);
 void			ft_putnbru(unsigned int nb);
@@ -133,5 +133,7 @@ void			ft_get_width(t_list *p, unsigned int nbr);
 void			printoctal(t_list *p, int maj);
 void			ft_gwidth(char *hexa, t_list *p, int oct);
 void			printchar(t_list *p, char letter);
+uintmax_t		ft_uatoi(void *str);
+char	*ft_convert_base_int(int nb, int base);
 
 #endif

@@ -1,0 +1,7 @@
+l -> unsigned long
+ll-> unsigned long laong
+h -> unsigned shorta
+hh-> unsigned char
+j -> uintmax_t
+z -> size_t (unsigned long) 
+

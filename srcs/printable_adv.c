@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 12:34:52 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/15 19:31:35 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/16 17:28:12 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,22 @@ void	printbinary(t_list *p)
 
 void	printhexa(t_list *p, int maj)
 {
-	char	*hexa;
-	unsigned int nb;
+	char		*hexa;
+	void		*enb;
+	int			ng;
 
-	nb = va_arg(p->ap, unsigned int);
-	hexa = ft_convert_base(nb, 16);
+	hexa = "0";
+	enb = va_arg(p->ap, void*);
+	ng = (int)enb;
+	if ((((uintmax_t)enb <= 2147483648)
+			|| ((uintmax_t)enb <= 4294967296 && p->l) || p->ll) && ng >= 0)
+		hexa = ft_convert_base((uintmax_t)enb, 16);
+	if (ng < 0)
+	{
+		ng = 2147483648 - ft_abs(ng);
+		hexa = ft_convert_base_int(ng, 16);
+		hexa[0] = 'f';
+	}
 	maj ? hexa = ft_toupper(hexa) : 0;
 	!*hexa ? hexa = "0" : 0;
 	if (*hexa == '0' && p->precision == 0)
@@ -49,7 +60,7 @@ void	printhexa(t_list *p, int maj)
 	else
 	{
 		p->nbout += 2 +ft_strlen(hexa);
-		p->sharp && *hexa != '0'? ft_putstr("0x") : p->nbout-- ;
+		p->sharp && *hexa != '0'? ft_putstr("0x") : p->nbout--;
 		p->sharp && *hexa != '0'? 0 : p->nbout-- ;
 		ft_putstr(hexa);
 	}
@@ -57,15 +68,21 @@ void	printhexa(t_list *p, int maj)
 
 void	printoctal(t_list *p, int maj)
 {
-	char	*hexa;
-	unsigned int nb;
+	char		*hexa;
+	void		*nb;
+	int			ng;
 
-	nb = va_arg(p->ap, unsigned int);
-//	printf("\nwidt = %d\n", p->width);
-//	printf("precision = %d\n", p->precision);
-//	printf("nb = %d\n", nb);
+	nb = va_arg(p->ap, void*);
+	ng = (int)nb;
 	p->width == -1 && p->precision == 0 && nb == 0 ? p->nbout-- : 0;
-	hexa = ft_convert_base(nb, 8);
+	if (((uintmax_t)nb <= 2147483648) || ((uintmax_t)nb <= 4294967295 && p->l) || p->ll)
+		hexa = ft_convert_base((uintmax_t)nb, 8);
+	if (ng < 0)
+	{
+		ng = 2147483648 - ft_abs(ng);
+		hexa = ft_convert_base_int(ng, 8);
+		hexa[0] = '3';
+	}
 	maj ? hexa = ft_toupper(hexa) : 0;
 	!*hexa ? hexa = "0" : 0;
 	if (p->precision != -1 || p->width != -1)
@@ -85,7 +102,9 @@ void	printunsigned(t_list *p)
 {
 	unsigned int nbr;
 
-	nbr = va_arg(p->ap, unsigned int);
+	nbr = va_arg(p->ap, uintmax_t);
+	if ((nbr > 2147483648) && (nbr > 4294967295 && !p->l) && !p->ll)
+		nbr = 0;
 	nbr == 0 ? p->nbout++ : 0;
 	if (p->positive && p->width != -1)
 		p->width--;

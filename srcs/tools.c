@@ -6,19 +6,12 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 13:54:53 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/15 14:12:14 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/16 14:21:00 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
-
-int	ft_convert(int	nb, int base)
-{
-	if (nb == 0 || base == 10)
-		return (nb);
-	return (nb % base + (ft_convert((nb / base), base)));
-}
 
 const char	*end_of_int(const char *str)
 {
