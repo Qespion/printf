@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 13:54:53 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/16 14:21:00 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/17 15:30:53 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ const char	*end_of_int(const char *str)
 	return (str);
 }
 
-int	ft_int_len(unsigned int nb)
+int	ft_int_len(uintmax_t nb)
 {
 	int	i;
 

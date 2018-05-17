@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 17:12:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/15 14:35:35 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/17 17:28:51 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,8 @@ void	ft_get_width(t_list *p, unsigned int nbr)
 	width_tmp = p->width;
 	spaces = ' ';
 	p->neg != 0 && !p->positive ? max++ : 0;
-//	printf("\np->neg = %d\n", p->neg);
-//	printf("\np->positive = %d\n", p->positive);
-//	printf("\nmax = %d\n", max);
 	p->width != -1 && nbr == 0  && p->precision == 0? max-- : 0;
 	p->zeros && p->precision == -1 && !p->negative ? spaces = '0' : 0;
-	//p->positive != -1 &&  p->precision < ft_int_len(nbr) ? max-- : 0;
 	if (spaces == '0' && p->neg && !p->negative)
 		ft_pos(p);
 	spaces == '0' && !p->negative && p->positive ? ft_pos(p): 0;
@@ -101,7 +97,7 @@ void	ft_putnbrn(t_list *p, int nbr)
 	}
 }
 
-void	ft_putnbrnu(t_list *p, unsigned int nbr)
+void	ft_putnbrnu(t_list *p, unsigned long long nbr)
 {
 	if (p->negative)
 	{

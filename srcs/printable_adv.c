@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 12:34:52 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/16 17:28:12 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/17 15:43:52 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	printhexa(t_list *p, int maj)
 	enb = va_arg(p->ap, void*);
 	ng = (int)enb;
 	if ((((uintmax_t)enb <= 2147483648)
-			|| ((uintmax_t)enb <= 4294967296 && p->l) || p->ll) && ng >= 0)
+			|| (p->l) || p->ll || p->j) && ng >= -1)
 		hexa = ft_convert_base((uintmax_t)enb, 16);
-	if (ng < 0)
+	if (ng < -1)
 	{
 		ng = 2147483648 - ft_abs(ng);
 		hexa = ft_convert_base_int(ng, 16);
@@ -56,11 +56,14 @@ void	printhexa(t_list *p, int maj)
 		return ;
 	}
 	if (p->precision != -1 || p->width != -1)
-		ft_puthexan(p, hexa, 0);
+		ft_puthexan(p, hexa, 0, maj);
 	else
 	{
 		p->nbout += 2 +ft_strlen(hexa);
-		p->sharp && *hexa != '0'? ft_putstr("0x") : p->nbout--;
+		if (maj)
+			p->sharp && *hexa != '0'? ft_putstr("0X") : p->nbout--;
+		else
+			p->sharp && *hexa != '0'? ft_putstr("0x") : p->nbout--;
 		p->sharp && *hexa != '0'? 0 : p->nbout-- ;
 		ft_putstr(hexa);
 	}
@@ -75,20 +78,21 @@ void	printoctal(t_list *p, int maj)
 	nb = va_arg(p->ap, void*);
 	ng = (int)nb;
 	p->width == -1 && p->precision == 0 && nb == 0 ? p->nbout-- : 0;
-	if (((uintmax_t)nb <= 2147483648) || ((uintmax_t)nb <= 4294967295 && p->l) || p->ll)
+	if ((((uintmax_t)nb <= 2147483648)
+			|| (p->l) || p->ll) && ng >= -1)
 		hexa = ft_convert_base((uintmax_t)nb, 8);
-	if (ng < 0)
+	if (ng < -1)
 	{
 		ng = 2147483648 - ft_abs(ng);
-		hexa = ft_convert_base_int(ng, 8);
-		hexa[0] = '3';
+		hexa = ft_convert_base_int(ng, 16);
+		hexa[0] = 'f';
 	}
 	maj ? hexa = ft_toupper(hexa) : 0;
 	!*hexa ? hexa = "0" : 0;
 	if (p->precision != -1 || p->width != -1)
 	{
 		p->sharp ? p->nbout-- : 0;
-		ft_puthexan(p, hexa, 1);
+		ft_puthexan(p, hexa, 1, maj);
 	}
 	else
 	{
@@ -98,12 +102,13 @@ void	printoctal(t_list *p, int maj)
 	}
 }
 
-void	printunsigned(t_list *p)
+void	printunsigned(t_list *p, int maj)
 {
-	unsigned int nbr;
+	unsigned long long nbr;
 
-	nbr = va_arg(p->ap, uintmax_t);
-	if ((nbr > 2147483648) && (nbr > 4294967295 && !p->l) && !p->ll)
+	nbr = va_arg(p->ap, unsigned long long);
+	(void)maj;
+	if (nbr > 4294967295 && !p->ll && !p->l && !maj && !p->j)
 		nbr = 0;
 	nbr == 0 ? p->nbout++ : 0;
 	if (p->positive && p->width != -1)
@@ -112,7 +117,10 @@ void	printunsigned(t_list *p)
 		ft_putnbrnu(p, nbr);
 	else
 	{
-		p->nbout += int_len((int)nbr, 10);
+		if ((((nbr > 2147483648 && !p->l) && (nbr > 4294967295 && !p->ll)) || !maj))
+			p->nbout += int_len(nbr, 10);
+		else
+			p->nbout++;
 		ft_putnbru(nbr);
 	}
 }

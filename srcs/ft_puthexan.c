@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 14:42:06 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/15 19:30:00 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/17 13:28:28 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,16 @@ void	ft_gprecision(char *hexa, t_list *p)
 	}
 }
 
-void	ft_puthexan(t_list *p, char *hexa, int oct)
+void	ft_puthexan(t_list *p, char *hexa, int oct, int maj)
 {
 	if (p->negative)
 	{
 		if (p->sharp && *hexa != '0')
 		{
-			oct ? ft_putchar('0') : ft_putstr("0x");
+			if (maj)
+				oct ? ft_putchar('0') : ft_putstr("0X");
+			else
+				oct ? ft_putchar('0') : ft_putstr("0x");
 			p->nbout += 2;
 		}
 		ft_gprecision(hexa, p);
@@ -75,7 +78,10 @@ void	ft_puthexan(t_list *p, char *hexa, int oct)
 		!p->zeros ? ft_gwidth(hexa, p, oct) : 0;
 		if (p->sharp && *hexa != '0')
 		{
-			oct ? ft_putchar('0') : ft_putstr("0x");
+			if (maj)
+				oct ? ft_putchar('0') : ft_putstr("0X");
+			else
+				oct ? ft_putchar('0') : ft_putstr("0x");
 			p->nbout += 2;
 		}
 		p->zeros ? ft_gwidth(hexa, p, oct) : 0;

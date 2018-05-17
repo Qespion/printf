@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   precision_test.c                                   :+:      :+:    :+:   */
+/*   longlong_len.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/07 13:38:23 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/17 17:28:11 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/17 15:30:13 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/17 17:20:12 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libftprintf.h"
 
-void	ft_printf(const char *format, ...);
-
-int main()
+int	longlong_len(long long nb)
 {
-	ft_printf("%d", -2147483649);
-	printf("%c", '\n');
-	printf("\nstdout = %d\n", printf("%d", -2147483649));
-	return (0);
+	int	i;
+
+	i = 0;
+	if (nb < -9223372036854775807)
+		return (19);
+	if (nb < 0)
+		nb *= -1;
+	if (nb == 0)
+		return (1);
+	while (nb > 0)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
 }

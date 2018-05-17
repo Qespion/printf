@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 11:37:15 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/16 17:08:54 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/17 18:08:48 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,8 @@ void	prints(t_list *p)
 	}
 }
 
-void	printfnb(t_list *p, int nbr)
-{
-	if (p->precision != -1 || p->width != -1)
-		ft_putnbrn(p, nbr);
-	else
-	{
-		if (p->positive && nbr >= 0)
-		{
-			p->nbout++;
-			ft_putchar('+');
-		}
-		nbr <= 0 ? p->nbout++ : 0;
-		p->nbout += int_len(ft_abs(nbr), 10);
-		ft_putnbr(nbr);
-	}
-}
-
 void	printnb(t_list *p)
 {
-	int	nbr;
-
-	nbr = va_arg(p->ap, int);
 	if (p->blank == 1 && p->positive == 0 && nbr > 0)
 	{
 		ft_putchar(' ');
@@ -67,15 +47,15 @@ void	printnb(t_list *p)
 		ft_get_width(p, 0);
 		return ;
 	}
-	printfnb(p, nbr);
+	else
+		call_va(p);
 }
-
 
 void	ft_get_arg(char letter, t_list *p)
 {
 	if (letter == 's' || letter == 'd' || letter == 'c' || letter == 'x'
 			|| letter == 'b' || letter == 'i' || letter == 'X' || letter == 'u'
-			|| letter == 'o' || letter == 'O')
+			|| letter == 'o' || letter == 'O' || letter == 'U')
 		p->increment = 1;
 	if (letter == 's')
 		prints(p);
@@ -90,7 +70,9 @@ void	ft_get_arg(char letter, t_list *p)
 	else if (letter == 'X')
 		printhexa(p, 1);
 	else if (letter == 'u')
-		printunsigned(p);
+		printunsigned(p, 0);
+	else if (letter == 'U')
+		printunsigned(p, 1);
 	else if (letter == 'o')
 		printoctal(p, 0);
 	else if (letter == 'O')

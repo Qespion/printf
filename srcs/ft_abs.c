@@ -6,13 +6,13 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/07 14:59:58 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/03 16:15:57 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/17 15:33:50 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_abs(int nb)
+int	ft_abs(long long nb)
 {
 	if (nb < 0)
 		return (-nb);
