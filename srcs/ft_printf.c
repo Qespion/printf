@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 11:52:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/17 17:51:00 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/18 17:48:24 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ const char	*ft_lenght_mod(const char *format, t_list *p)
 int	ft_printf(const char* format, ...)
 {
 	t_list	*p;
+	int	outnbr;
+
 	p = create_struct();
 	va_start(p->ap, format);
 	while (*format)
@@ -126,5 +128,7 @@ int	ft_printf(const char* format, ...)
 //			************************************penser a mettre le -1 au retour
 	printf("\nstdout = %d\n", p->nbout);
 //	printf("width = %d\n", p->width);
-	return (p->nbout);
+	outnbr = p->nbout;
+	free(p);
+	return (outnbr);
 }

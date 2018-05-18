@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_uintmax.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/04 11:21:58 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/18 12:47:04 by oespion          ###   ########.fr       */
+/*   Created: 2018/05/18 11:43:45 by oespion           #+#    #+#             */
+/*   Updated: 2018/05/18 13:20:42 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putnbr_uintmax(uintmax_t nb)
 {
-	while (*s)
+	if (nb > 9)
 	{
-		if (*s == (char)c)
-			return ((char*)s);
-		s++;
+		ft_putnbr_uintmax(nb / 10);
+		ft_putnbr_uintmax(nb % 10);
 	}
-	if ((char)c == 0)
-		return ((char*)s);
-	return (NULL);
+	else
+		ft_putchar('0' + nb);
 }

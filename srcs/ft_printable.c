@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 11:37:15 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/17 18:08:48 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/18 17:45:56 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@ void	prints(t_list *p)
 
 void	printnb(t_list *p)
 {
+	long long	nbr;
+
+	if (p->j || p->hh || p->h || p->l || p->ll || p->z)
+	{
+		call_va(p);
+		return ;
+	}
+	nbr = va_arg(p->ap, long long);
+	while (nbr < -2147483648)
+			nbr += 4294967296;
+		while (nbr > 2147483647)
+			nbr -= 4294967296;
 	if (p->blank == 1 && p->positive == 0 && nbr > 0)
 	{
 		ft_putchar(' ');
@@ -47,8 +59,18 @@ void	printnb(t_list *p)
 		ft_get_width(p, 0);
 		return ;
 	}
+	if (p->precision != -1 || p->width != -1)
+		ft_putnbrn(p, nbr);
 	else
-		call_va(p);
+	{
+		if (p->positive && nbr >= 0)
+		{
+			p->nbout++;
+			ft_putchar('+');
+		}
+		p->nbout += ft_int_len(nbr);
+		ft_putnbr_longlong(nbr);
+	}
 }
 
 void	ft_get_arg(char letter, t_list *p)

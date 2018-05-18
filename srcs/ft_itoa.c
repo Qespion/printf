@@ -6,21 +6,21 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 11:19:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/03 16:16:15 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/18 13:58:31 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	ft_size(int n)
+static int	ft_size(long long n)
 {
 	int size;
 
 	size = 0;
 	if (n == 0)
 		return (1);
-	if (n == -2147483648)
-		return (11);
+	if (n < -9223372036854775807)
+		return (21);
 	if (n < 0)
 	{
 		size++;
@@ -34,14 +34,14 @@ static int	ft_size(int n)
 	return (size);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(long long n)
 {
 	int		size;
 	char	*str;
 
 	size = ft_size(n) - 1;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
+	if (n < -9223372036854775807)
+		return (ft_strdup("-9223372036854775808"));
 	if (!(str = (char*)malloc(sizeof(char) * (size + 2))))
 		return (0);
 	str[size + 1] = '\0';

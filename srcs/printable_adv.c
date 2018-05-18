@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 12:34:52 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/17 15:43:52 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/18 17:45:58 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	printbinary(t_list *p)
 		p->nbout += ft_strlen(bin);
 		ft_putstr(bin);
 	}
+	free(bin);
 }
 
 void	printhexa(t_list *p, int maj)
@@ -66,7 +67,7 @@ void	printhexa(t_list *p, int maj)
 			p->sharp && *hexa != '0'? ft_putstr("0x") : p->nbout--;
 		p->sharp && *hexa != '0'? 0 : p->nbout-- ;
 		ft_putstr(hexa);
-	}
+	};
 }
 
 void	printoctal(t_list *p, int maj)

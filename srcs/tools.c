@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 13:54:53 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/17 15:30:53 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/18 15:57:46 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,19 @@ const char	*end_of_int(const char *str)
 	return (str);
 }
 
-int	ft_int_len(uintmax_t nb)
+int	ft_int_len(long long nb)
 {
 	int	i;
 
 	i = 1;
-	if (nb == 0)
+	if (nb < -9223372036854775807)
+		return (20);
+	if (nb < 0)
+	{
+		i++;
+		nb *= -1;
+	}
+	else if (nb == 0)
 		return (1);
 	while (nb > 0)
 	{

@@ -46,7 +46,7 @@ SRC=  srcs/ft_atoi.c  \
       srcs/ft_putendl_fd.c  \
       srcs/ft_putendl.c \
       srcs/ft_itoa.c  \
-      srcs/ft_putnbr.c  \
+      srcs/ft_putnbr_longlong.c  \
       srcs/ft_strnstr.c \
       srcs/ft_strjoin.c \
       srcs/ft_strsub.c  \
@@ -74,7 +74,8 @@ SRC=  srcs/ft_atoi.c  \
       srcs/ft_putnbru.c \
       srcs/convert_base_int.c \
       srcs/longlong_len.c \
-      srcs/tools2.c
+      srcs/tools2.c \
+      srcs/ft_putnbr_uintmax.c
 
 C_GREEN	=	"\033[32m"
 C_BLUE	=	"\033[36m"

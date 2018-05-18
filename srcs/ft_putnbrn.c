@@ -6,7 +6,7 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 17:12:36 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/17 17:28:51 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/18 17:45:55 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ void	ft_get_precision(unsigned int nbr, t_list *p)
 	p->neg ? ft_pos(p): 0;
 	p->positive ? ft_pos(p) : 0;
 	p->precision == 0 && nbr == 0 ? precision_tmp = 0 : 0;
-//	printf("\nint len = %d\n", ft_int_len(nbr));
-//	printf("precision tmp = %d\n", precision_tmp);
-//	printf("precision = %d\n", p->precision);
 	while (ft_int_len(nbr) < precision_tmp)
 	{
 		ft_putchar('0');
@@ -74,26 +71,27 @@ void	ft_get_precision(unsigned int nbr, t_list *p)
 	}
 }
 
-void	ft_putnbrn(t_list *p, int nbr)
+void	ft_putnbrn(t_list *p, long long nbr)
 {
 	if (nbr < 0)
 		p->neg = 1;
 	nbr = ft_abs(nbr);
-	nbr == 0 ? p->nbout++ : 0;
+	nbr == 0 && p->precision == -1 ? p->nbout++ : 0;
 	if (p->negative)
 	{
 		p->neg ? p->width-- : 0;
 		ft_get_precision(nbr, p);
-		ft_putnbr(nbr);
+		ft_putnbr_longlong(nbr);
 		ft_get_width(p, nbr);
 		p->nbout += int_len(nbr, 10);
 	}
 	else
 	{
-		p->nbout += int_len(nbr, 10);
+	//	printf("\nNBOUT->%d\n", p->nbout);
+		p->nbout += ft_int_len(nbr);
 		ft_get_width(p, nbr);
 		ft_get_precision(nbr, p);
-		ft_putnbr(nbr);
+		ft_putnbr_longlong(nbr);
 	}
 }
 

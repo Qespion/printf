@@ -6,61 +6,114 @@
 /*   By: oespion <oespion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 17:33:37 by oespion           #+#    #+#             */
-/*   Updated: 2018/05/17 18:09:16 by oespion          ###   ########.fr       */
+/*   Updated: 2018/05/18 17:45:58 by oespion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.a"
+#include "libftprintf.h"
 #include <stdio.h>
 
 void	call_va(t_list *p)
 {
-	uintmax_t		max;
+	intmax_t		max;
 	long long int	longlong;
 	int				basenb;
-	short			bermuda;
-	unsigned char	inconnu;
 
 	if (p->j)
 	{
-		max = va_arg(p->ap, uintmax_t);
-		p->nbout += ft_int_len(max_nbr);
-		ft_putnbrnu(p, (unsigned long long)max)
-	}
-	else if (p->l || p->ll || p->z)
-	{
-		if (p->blank == 1 && p->positive == 0 && nbr > 0)
+		max = va_arg(p->ap, intmax_t);
+		if (p->blank == 1 && p->positive == 0 && max > 0)
 		{
 			ft_putchar(' ');
 			p->width--;
 			p->nbout++;
 		}
+		p->positive && p->width != -1 ? p->width-- : 0;
+		if (!p->precision && max == 0)
+		{
+			ft_get_width(p, 0);
+			return ;
+		}
+		if (p->precision != -1 || p->width != -1)
+			ft_putnbrn(p, max);
+		else
+		{
+			if (p->positive)
+			{
+				p->nbout++;
+				ft_putchar('+');
+			}
+			max == 0 ? p->nbout++ : 0;
+			p->nbout += ft_int_len(max);
+			ft_putnbr_longlong(max);
+		}
+	}
+
+	else if (p->l || p->ll || p->z)
+	{
 		longlong = va_arg(p->ap, long long);
-		p->nbout += longlong_len(nbr);
+		p->nbout += longlong_len(longlong);
+		if (!p->precision && longlong == 0)
+		{
+			ft_get_width(p, 0);
+			return ;
+		}
+		if (p->blank == 1 && p->positive == 0 && longlong > 0)
+		{
+			ft_putchar(' ');
+			p->width--;
+			p->nbout++;
+		}
 		if (p->positive && longlong >= 0)
 		{
 			p->nbout++;
 			ft_putchar('+');
 		}
-		nbr <= 0 ? p->nbout++ : 0;
-		printfnb(t_list *p, longlong, 0, 0);
+		longlong < -0 ? p->nbout++ : 0;
+		p->z ? p->nbout -= 2 : 0;
+	//	longlong == 0 ? p->nbout = -1 : 0;
+		ft_putnbrn(p, longlong);
 	}
 	else if (p->h)
 	{
-		bermuda = va_arg(p->ap, short);
-		p->nbout += longlong_len(nbr);
-		printfnb(t_list *p, (long long)bermuda, 0, 0);
+		longlong = va_arg(p->ap, long long);
+		while (longlong < -32768)
+			longlong += 65536;
+		while (longlong > 32767)
+			longlong -= 65536;
+		if (!p->precision && longlong == 0)
+		{
+			ft_get_width(p, 0);
+			return ;
+		}
+		if (longlong == 0)
+			p->nbout--;
+		ft_putnbrn(p, longlong);
 	}
 	else if (p->hh)
 	{
-		inconnu = va_arg(p->ap, unsigned char);
-		p->nbout += longlong_len(nbr);
-		printfnb(t_list *p, (long long)inconnu, 0, 0);
+		longlong = va_arg(p->ap, long long);
+		while (longlong < -128)
+			longlong += 256;
+		while (longlong > 127)
+			longlong -= 256;
+		//p->nbout += longlong_len(longlong);
+		if (!p->precision && longlong == 0)
+		{
+			ft_get_width(p, 0);
+			return ;
+		}
+		ft_putnbrn(p, longlong);
 	}
 	else
 	{
 		basenb = va_arg(p->ap, uintmax_t);
-		p->nbout += longlong_len(nbr);
-		printfnb(t_list *p, (long long)basenb, 0, 0);
+		p->nbout += longlong_len(basenb);
+		if (!p->precision && basenb == 0)
+		{
+			ft_get_width(p, 0);
+			return ;
+		}
+		ft_putnbrn(p, basenb);
 	}
 }
