@@ -104,7 +104,7 @@ char			*ft_strtrim(char const *s);
 char			*ft_itoa(long long n);
 void			ft_sort_int(int *lst, size_t len);
 int				ft_power(int n, int power);
-int				ft_abs(long long nb);
+uintmax_t		ft_abs(long long nb);
 int				ft_is_lowercase(char *str);
 int				ft_is_uppercase(char *str);
 void			ft_free_tab(char **tab);
